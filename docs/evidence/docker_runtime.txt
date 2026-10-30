@@ -1,0 +1,27 @@
+$ docker images visionq
+IMAGE           ID             DISK USAGE   CONTENT SIZE   EXTRA
+visionq:2.0.0   459cd2a2aa26        885MB          212MB   U    
+
+$ docker ps
+CONTAINER ID   IMAGE           COMMAND                  CREATED         STATUS                   PORTS                    NAMES
+9fa3b879704b   visionq:2.0.0   "sh -c 'exec uvicorn…"   5 minutes ago   Up 5 minutes (healthy)   0.0.0.0:8000->8000/tcp   visionq
+
+$ docker inspect --format '{{.State.Health.Status}}' visionq
+healthy
+
+$ docker logs visionq | tail -15
+INFO:     172.17.0.1:36888 - "GET /ui/styles.css HTTP/1.1" 200 OK
+INFO:     172.17.0.1:36898 - "GET /ui/app.js HTTP/1.1" 200 OK
+INFO:     172.17.0.1:36908 - "GET /ui/config.js HTTP/1.1" 200 OK
+{"ts": "2026-10-30T04:59:31", "level": "INFO", "logger": "visionq", "msg": "request", "request_id": "ad0d9783070e", "method": "GET", "path": "/api/v1/health", "status": 200, "latency_ms": 2.22}
+INFO:     172.17.0.1:36908 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     172.17.0.1:36888 - "GET /ui/samples/inclusion_161.jpg HTTP/1.1" 200 OK
+INFO:     172.17.0.1:36898 - "GET /ui/samples/crazing_151.jpg HTTP/1.1" 200 OK
+INFO:     172.17.0.1:36914 - "GET /ui/samples/patches_128.jpg HTTP/1.1" 200 OK
+INFO:     172.17.0.1:36920 - "GET /ui/samples/rolled-in_scale_138.jpg HTTP/1.1" 200 OK
+INFO:     172.17.0.1:36916 - "GET /ui/samples/pitted_surface_110.jpg HTTP/1.1" 200 OK
+INFO:     172.17.0.1:36908 - "GET /ui/samples/scratches_195.jpg HTTP/1.1" 200 OK
+{"ts": "2026-10-30T04:59:32", "level": "INFO", "logger": "visionq", "msg": "request", "request_id": "8cb14f913867", "method": "POST", "path": "/api/v1/inspect", "status": 200, "latency_ms": 43.42}
+INFO:     172.17.0.1:36908 - "POST /api/v1/inspect HTTP/1.1" 200 OK
+{"ts": "2026-10-30T04:59:43", "level": "INFO", "logger": "visionq", "msg": "request", "request_id": "1bf2e2f6cb61", "method": "GET", "path": "/api/v1/health", "status": 200, "latency_ms": 0.52}
+INFO:     127.0.0.1:39328 - "GET /api/v1/health HTTP/1.1" 200 OK

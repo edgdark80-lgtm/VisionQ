@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - name: Lint
+        run: ruff check app tests scripts training
+      - name: Pruebas unitarias, de integración y de casos extremos
+        run: pytest -q
+
+  docker:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Construir imagen
+        run: docker build -t visionq:ci .
+      - name: Ejecutar contenedor
+        run: |
+          docker run -d --name visionq -p 8000:8000 --read-only --tmpfs /tmp visionq:ci
+          for i in $(seq 1 30); do curl -sf localhost:8000/api/v1/health && break; sleep 1; done
+      - name: Prueba de humo E2E contra el contenedor
+        run: bash scripts/smoke_test.sh http://localhost:8000
+      - name: Logs del contenedor
+        if: always()
+        run: docker logs visionq

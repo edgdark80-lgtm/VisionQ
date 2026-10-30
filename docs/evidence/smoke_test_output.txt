@@ -1,0 +1,13 @@
+== VisionQ smoke test contra http://localhost:8000 (2026-10-30T04:54:14Z)
+  [OK]    GET  /api/v1/health -> HTTP 200
+  [OK]    GET  /api/v1/models -> HTTP 200
+  [OK]    GET  /ui/ (frontend) -> HTTP 200
+  [OK]    GET  /openapi.json -> HTTP 200
+  [OK]    POST /api/v1/inspect (scratches) -> HTTP 200
+  [OK]    POST /api/v1/inspect/batch (3 img) -> HTTP 200
+  [OK]    POST /api/v1/failure/predict (normal) -> HTTP 200
+  [OK]    POST /api/v1/failure/predict (riesgo) -> HTTP 200
+  [OK]    POST /api/v1/failure/predict (inválido -> 422) -> HTTP 422
+  [OK]    POST /api/v1/inspect (texto -> 415) -> HTTP 415
+  [OK]    GET  /api/v1/metrics -> HTTP 200
+== Resultado: 11 OK, 0 fallas

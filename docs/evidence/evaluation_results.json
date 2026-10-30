@@ -1,0 +1,408 @@
+{
+  "vision_clean_internal_test": {
+    "n": 354,
+    "accuracy": 0.9774,
+    "manual_review_rate": 0.0056,
+    "accuracy_on_auto_decisions": 0.9773,
+    "ood_rate": 0.0,
+    "mean_confidence": 0.8733,
+    "mean_latency_ms": 38.71
+  },
+  "vision_external_30": {
+    "n": 30,
+    "accuracy": 0.9667,
+    "manual_review_rate": 0.0,
+    "accuracy_on_auto_decisions": 0.9667,
+    "ood_rate": 0.0,
+    "mean_confidence": 0.8681,
+    "mean_latency_ms": 38.16
+  },
+  "vision_external_errors": [
+    {
+      "file": "pitted_surface_175.jpg",
+      "true": "pitted_surface",
+      "pred": "patches",
+      "confidence": 0.8757,
+      "decision": "RETRABAJO"
+    }
+  ],
+  "vision_perturbations": {
+    "Original": {
+      "n": 354,
+      "accuracy": 0.9774,
+      "manual_review_rate": 0.0056,
+      "accuracy_on_auto_decisions": 0.9773,
+      "ood_rate": 0.0,
+      "mean_confidence": 0.8733,
+      "mean_latency_ms": 38.71
+    },
+    "Ruido gaussiano σ=5": {
+      "n": 354,
+      "accuracy": 0.9605,
+      "manual_review_rate": 0.0028,
+      "accuracy_on_auto_decisions": 0.9603,
+      "ood_rate": 0.0,
+      "mean_confidence": 0.8755,
+      "mean_latency_ms": 37.69
+    },
+    "Ruido gaussiano σ=15": {
+      "n": 354,
+      "accuracy": 0.9463,
+      "manual_review_rate": 0.0085,
+      "accuracy_on_auto_decisions": 0.9487,
+      "ood_rate": 0.0,
+      "mean_confidence": 0.8784,
+      "mean_latency_ms": 38.67
+    },
+    "Ruido gaussiano σ=30": {
+      "n": 354,
+      "accuracy": 0.8249,
+      "manual_review_rate": 0.0254,
+      "accuracy_on_auto_decisions": 0.8406,
+      "ood_rate": 0.0,
+      "mean_confidence": 0.8737,
+      "mean_latency_ms": 38.85
+    },
+    "Desenfoque r=1": {
+      "n": 354,
+      "accuracy": 0.9605,
+      "manual_review_rate": 0.0085,
+      "accuracy_on_auto_decisions": 0.9601,
+      "ood_rate": 0.0028,
+      "mean_confidence": 0.8713,
+      "mean_latency_ms": 38.98
+    },
+    "Desenfoque r=2.5": {
+      "n": 354,
+      "accuracy": 0.9237,
+      "manual_review_rate": 0.0452,
+      "accuracy_on_auto_decisions": 0.929,
+      "ood_rate": 0.0311,
+      "mean_confidence": 0.8614,
+      "mean_latency_ms": 37.66
+    },
+    "Brillo +30 %": {
+      "n": 354,
+      "accuracy": 0.8842,
+      "manual_review_rate": 0.0932,
+      "accuracy_on_auto_decisions": 0.947,
+      "ood_rate": 0.0621,
+      "mean_confidence": 0.8496,
+      "mean_latency_ms": 39.16
+    },
+    "Brillo −30 %": {
+      "n": 354,
+      "accuracy": 0.952,
+      "manual_review_rate": 0.0028,
+      "accuracy_on_auto_decisions": 0.9547,
+      "ood_rate": 0.0,
+      "mean_confidence": 0.8672,
+      "mean_latency_ms": 41.18
+    },
+    "Contraste −50 %": {
+      "n": 354,
+      "accuracy": 0.7825,
+      "manual_review_rate": 0.0226,
+      "accuracy_on_auto_decisions": 0.7861,
+      "ood_rate": 0.0,
+      "mean_confidence": 0.853,
+      "mean_latency_ms": 39.56
+    },
+    "Rotación 90°": {
+      "n": 354,
+      "accuracy": 0.9096,
+      "manual_review_rate": 0.0169,
+      "accuracy_on_auto_decisions": 0.908,
+      "ood_rate": 0.0085,
+      "mean_confidence": 0.873,
+      "mean_latency_ms": 39.39
+    },
+    "Rotación 180°": {
+      "n": 354,
+      "accuracy": 0.9548,
+      "manual_review_rate": 0.0113,
+      "accuracy_on_auto_decisions": 0.9571,
+      "ood_rate": 0.0028,
+      "mean_confidence": 0.8692,
+      "mean_latency_ms": 38.31
+    },
+    "Espejo horizontal": {
+      "n": 354,
+      "accuracy": 0.9689,
+      "manual_review_rate": 0.0113,
+      "accuracy_on_auto_decisions": 0.9686,
+      "ood_rate": 0.0028,
+      "mean_confidence": 0.8684,
+      "mean_latency_ms": 39.87
+    },
+    "Reescalado 50 %": {
+      "n": 354,
+      "accuracy": 0.9633,
+      "manual_review_rate": 0.0169,
+      "accuracy_on_auto_decisions": 0.9655,
+      "ood_rate": 0.0056,
+      "mean_confidence": 0.8703,
+      "mean_latency_ms": 39.16
+    },
+    "Recorte central 70 %": {
+      "n": 354,
+      "accuracy": 0.9605,
+      "manual_review_rate": 0.0169,
+      "accuracy_on_auto_decisions": 0.9626,
+      "ood_rate": 0.0028,
+      "mean_confidence": 0.8694,
+      "mean_latency_ms": 39.82
+    },
+    "JPEG calidad 20": {
+      "n": 354,
+      "accuracy": 0.9661,
+      "manual_review_rate": 0.0198,
+      "accuracy_on_auto_decisions": 0.9654,
+      "ood_rate": 0.0169,
+      "mean_confidence": 0.8682,
+      "mean_latency_ms": 39.41
+    }
+  },
+  "vision_ood_inputs": {
+    "Ruido uniforme": {
+      "decision": "REVISION_MANUAL",
+      "pred": "scratches",
+      "confidence": 0.7895,
+      "ood": true,
+      "quality_flags": [],
+      "reason": "Imagen fuera de la distribución de entrenamiento"
+    },
+    "Ruido gaussiano puro": {
+      "decision": "REVISION_MANUAL",
+      "pred": "scratches",
+      "confidence": 0.872,
+      "ood": true,
+      "quality_flags": [],
+      "reason": "Imagen fuera de la distribución de entrenamiento"
+    },
+    "Tablero de ajedrez": {
+      "decision": "REVISION_MANUAL",
+      "pred": "scratches",
+      "confidence": 0.7895,
+      "ood": true,
+      "quality_flags": [],
+      "reason": "Imagen fuera de la distribución de entrenamiento"
+    },
+    "Gradiente lineal": {
+      "decision": "REVISION_MANUAL",
+      "pred": "scratches",
+      "confidence": 0.7901,
+      "ood": true,
+      "quality_flags": [],
+      "reason": "Imagen fuera de la distribución de entrenamiento"
+    },
+    "Imagen negra": {
+      "decision": "REVISION_MANUAL",
+      "pred": "scratches",
+      "confidence": 0.7897,
+      "ood": true,
+      "quality_flags": [
+        "IMAGEN_SUBEXPUESTA",
+        "IMAGEN_UNIFORME_SIN_TEXTURA"
+      ],
+      "reason": "Calidad de captura insuficiente: IMAGEN_SUBEXPUESTA, IMAGEN_UNIFORME_SIN_TEXTURA"
+    },
+    "Imagen blanca": {
+      "decision": "REVISION_MANUAL",
+      "pred": "scratches",
+      "confidence": 0.7898,
+      "ood": true,
+      "quality_flags": [
+        "IMAGEN_SOBREEXPUESTA",
+        "IMAGEN_UNIFORME_SIN_TEXTURA"
+      ],
+      "reason": "Calidad de captura insuficiente: IMAGEN_SOBREEXPUESTA, IMAGEN_UNIFORME_SIN_TEXTURA"
+    },
+    "Gris uniforme": {
+      "decision": "REVISION_MANUAL",
+      "pred": "scratches",
+      "confidence": 0.7898,
+      "ood": true,
+      "quality_flags": [
+        "IMAGEN_UNIFORME_SIN_TEXTURA"
+      ],
+      "reason": "Calidad de captura insuficiente: IMAGEN_UNIFORME_SIN_TEXTURA"
+    },
+    "Círculos concéntricos": {
+      "decision": "REVISION_MANUAL",
+      "pred": "scratches",
+      "confidence": 0.7893,
+      "ood": true,
+      "quality_flags": [],
+      "reason": "Imagen fuera de la distribución de entrenamiento"
+    },
+    "Franjas horizontales": {
+      "decision": "REVISION_MANUAL",
+      "pred": "scratches",
+      "confidence": 0.7896,
+      "ood": true,
+      "quality_flags": [],
+      "reason": "Imagen fuera de la distribución de entrenamiento"
+    },
+    "Texto/rejilla fina": {
+      "decision": "REVISION_MANUAL",
+      "pred": "scratches",
+      "confidence": 0.7895,
+      "ood": true,
+      "quality_flags": [],
+      "reason": "Imagen fuera de la distribución de entrenamiento"
+    }
+  },
+  "vision_ood_detection_rate": 1.0,
+  "vision_confidence_sweep": [
+    {
+      "threshold": 0.3,
+      "coverage": 1.0,
+      "accuracy_auto": 0.9774
+    },
+    {
+      "threshold": 0.35,
+      "coverage": 1.0,
+      "accuracy_auto": 0.9774
+    },
+    {
+      "threshold": 0.4,
+      "coverage": 1.0,
+      "accuracy_auto": 0.9774
+    },
+    {
+      "threshold": 0.45,
+      "coverage": 1.0,
+      "accuracy_auto": 0.9774
+    },
+    {
+      "threshold": 0.5,
+      "coverage": 1.0,
+      "accuracy_auto": 0.9774
+    },
+    {
+      "threshold": 0.55,
+      "coverage": 1.0,
+      "accuracy_auto": 0.9774
+    },
+    {
+      "threshold": 0.6,
+      "coverage": 1.0,
+      "accuracy_auto": 0.9774
+    },
+    {
+      "threshold": 0.65,
+      "coverage": 1.0,
+      "accuracy_auto": 0.9774
+    },
+    {
+      "threshold": 0.7,
+      "coverage": 1.0,
+      "accuracy_auto": 0.9774
+    },
+    {
+      "threshold": 0.75,
+      "coverage": 1.0,
+      "accuracy_auto": 0.9774
+    },
+    {
+      "threshold": 0.8,
+      "coverage": 0.8418,
+      "accuracy_auto": 0.9799
+    },
+    {
+      "threshold": 0.85,
+      "coverage": 0.7147,
+      "accuracy_auto": 0.9881
+    },
+    {
+      "threshold": 0.9,
+      "coverage": 0.3192,
+      "accuracy_auto": 1.0
+    },
+    {
+      "threshold": 0.95,
+      "coverage": 0.0791,
+      "accuracy_auto": 1.0
+    }
+  ],
+  "failure_recall_by_mode": {
+    "TWF": {
+      "n_test": 10,
+      "detected": 2,
+      "recall": 0.2
+    },
+    "HDF": {
+      "n_test": 29,
+      "detected": 28,
+      "recall": 0.9655
+    },
+    "PWF": {
+      "n_test": 13,
+      "detected": 13,
+      "recall": 1.0
+    },
+    "OSF": {
+      "n_test": 16,
+      "detected": 16,
+      "recall": 1.0
+    },
+    "RNF": {
+      "n_test": 4,
+      "detected": 0,
+      "recall": 0.0
+    }
+  },
+  "failure_confusion_matrix": [
+    [
+      1924,
+      8
+    ],
+    [
+      11,
+      57
+    ]
+  ],
+  "failure_threshold_table": [
+    {
+      "threshold": 0.2,
+      "tp": 59,
+      "fp": 29,
+      "fn": 9,
+      "precision": 0.6705,
+      "recall": 0.8676
+    },
+    {
+      "threshold": 0.3,
+      "tp": 58,
+      "fp": 12,
+      "fn": 10,
+      "precision": 0.8286,
+      "recall": 0.8529
+    },
+    {
+      "threshold": 0.36,
+      "tp": 57,
+      "fp": 8,
+      "fn": 11,
+      "precision": 0.8769,
+      "recall": 0.8382
+    },
+    {
+      "threshold": 0.5,
+      "tp": 54,
+      "fp": 2,
+      "fn": 14,
+      "precision": 0.9643,
+      "recall": 0.7941
+    },
+    {
+      "threshold": 0.7,
+      "tp": 43,
+      "fp": 2,
+      "fn": 25,
+      "precision": 0.9556,
+      "recall": 0.6324
+    }
+  ]
+}

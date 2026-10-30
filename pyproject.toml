@@ -1,0 +1,18 @@
+[tool.ruff]
+line-length = 145
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["B008", "B905"]  # Depends()/File() en firmas de FastAPI; zip() sobre listas de igual longitud
+
+[tool.ruff.lint.per-file-ignores]
+"scripts/*" = ["E702"]  # scripts de gráficas compactos
+
+[tool.ruff.lint.isort]
+known-first-party = ["app"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [".", "tests"]
+filterwarnings = ["ignore::DeprecationWarning"]

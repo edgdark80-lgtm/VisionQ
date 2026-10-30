@@ -1,0 +1,19 @@
+# Blueprint de Render (PaaS). En Render: New > Blueprint > selecciona este repositorio.
+# Render detecta el Dockerfile, inyecta PORT y usa la sonda de salud indicada.
+services:
+  - type: web
+    name: visionq-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: starter          # >= 512 MB de RAM recomendado (el plan free puede dormir el servicio)
+    region: oregon
+    healthCheckPath: /api/v1/health
+    autoDeploy: true
+    envVars:
+      - key: VISIONQ_ENVIRONMENT
+        value: production
+      - key: VISIONQ_LOG_LEVEL
+        value: INFO
+      - key: VISIONQ_API_KEY
+        generateValue: true

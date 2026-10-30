@@ -1,0 +1,15 @@
+flowchart LR
+  U[Usuario / operador<br>navegador] -->|HTTPS| LB
+  subgraph Cloud[Nube: Cloud Run / Render / Azure Container Apps]
+    LB[Balanceador gestionado<br>TLS + PORT] --> C
+    subgraph C[Contenedor visionq:2.0.0 · usuario no root · FS solo lectura]
+      FE[Frontend /ui/<br>HTML · CSS · JS] -->|fetch JSON / multipart| API
+      API[FastAPI /api/v1<br>validación Pydantic · X-Request-ID · logs JSON] --> VS[VisionService<br>LBP+GLCM+HOG → SVM]
+      API --> FS[FailureService<br>Random Forest]
+      VS --- M1[(vision_model.joblib)]
+      FS --- M2[(failure_model.joblib)]
+      API --> DOC[/docs · /redoc · /openapi.json/]
+    end
+  end
+  GH[GitHub repo] -->|Actions: lint · pytest · build · smoke| REG[(Registro de imágenes<br>GHCR / Artifact Registry)]
+  REG -->|deploy| LB

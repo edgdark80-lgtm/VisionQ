@@ -1,0 +1,212 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.12kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/visionq-base:py311
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 253B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 1.84kB done
+#4 DONE 0.0s
+
+#5 [builder 1/4] FROM docker.io/library/visionq-base:py311@sha256:48f5ab32135f94d63a5d20d7aa43382ac15cc02607b365979f43660af7aea05d
+#5 resolve docker.io/library/visionq-base:py311@sha256:48f5ab32135f94d63a5d20d7aa43382ac15cc02607b365979f43660af7aea05d 0.0s done
+#5 CACHED
+
+#6 [runtime 2/7] RUN useradd --create-home --uid 1000 visionq
+#6 1.727 useradd: warning: chown on `/home/visionq' failed: No such file or directory
+#6 DONE 2.1s
+
+#7 [builder 2/4] RUN python -m venv /opt/venv
+#7 ...
+
+#8 [runtime 3/7] WORKDIR /app
+#8 DONE 0.1s
+
+#7 [builder 2/4] RUN python -m venv /opt/venv
+#7 DONE 6.5s
+
+#9 [builder 3/4] COPY requirements.txt .
+#9 DONE 0.0s
+
+#10 [builder 4/4] RUN pip install --upgrade pip && pip install -r requirements.txt
+#10 0.426 Requirement already satisfied: pip in /opt/venv/lib/python3.11/site-packages (24.0)
+#10 0.696 Collecting pip
+#10 1.863   Downloading pip-26.2.2-py3-none-any.whl.metadata (4.6 kB)
+#10 3.510 Downloading pip-26.2.2-py3-none-any.whl (1.8 MB)
+#10 3.933    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 4.3 MB/s eta 0:00:00
+#10 3.982 Installing collected packages: pip
+#10 3.982   Attempting uninstall: pip
+#10 3.984     Found existing installation: pip 24.0
+#10 4.015     Uninstalling pip-24.0:
+#10 4.130       Successfully uninstalled pip-24.0
+#10 4.845 Successfully installed pip-26.2.2
+#10 5.288 Collecting fastapi==0.162.0 (from -r requirements.txt (line 2))
+#10 5.512   Downloading fastapi-0.162.0-py3-none-any.whl.metadata (26 kB)
+#10 5.609 Collecting uvicorn==0.54.0 (from uvicorn[standard]==0.54.0->-r requirements.txt (line 3))
+#10 5.802   Downloading uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+#10 5.873 Collecting python-multipart==0.0.32 (from -r requirements.txt (line 4))
+#10 6.046   Downloading python_multipart-0.0.32-py3-none-any.whl.metadata (2.1 kB)
+#10 6.186 Collecting pydantic==2.14.2 (from -r requirements.txt (line 5))
+#10 6.264   Downloading pydantic-2.14.2-py3-none-any.whl.metadata (137 kB)
+#10 6.339 Collecting pydantic-settings==2.16.2 (from -r requirements.txt (line 6))
+#10 6.430   Downloading pydantic_settings-2.16.2-py3-none-any.whl.metadata (4.0 kB)
+#10 6.658 Collecting numpy==2.4.6 (from -r requirements.txt (line 7))
+#10 6.769   Downloading numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+#10 6.961 Collecting scipy==1.17.1 (from -r requirements.txt (line 8))
+#10 7.068   Downloading scipy-1.17.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+#10 7.236 Collecting pandas==3.1.0 (from -r requirements.txt (line 9))
+#10 7.357   Downloading pandas-3.1.0-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (18 kB)
+#10 7.495 Collecting scikit-learn==1.9.1 (from -r requirements.txt (line 10))
+#10 7.574   Downloading scikit_learn-1.9.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.3 kB)
+#10 7.685 Collecting scikit-image==0.26.0 (from -r requirements.txt (line 11))
+#10 7.765   Downloading scikit_image-0.26.0-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (15 kB)
+#10 7.988 Collecting pillow==13.0.0 (from -r requirements.txt (line 12))
+#10 8.097   Downloading pillow-13.0.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.1 kB)
+#10 8.171 Collecting joblib==1.6.0 (from -r requirements.txt (line 13))
+#10 8.251   Downloading joblib-1.6.0-py3-none-any.whl.metadata (6.5 kB)
+#10 8.333 Collecting starlette>=0.46.0 (from fastapi==0.162.0->-r requirements.txt (line 2))
+#10 8.417   Downloading starlette-1.10.0-py3-none-any.whl.metadata (6.6 kB)
+#10 8.493 Collecting typing-extensions>=4.8.0 (from fastapi==0.162.0->-r requirements.txt (line 2))
+#10 8.604   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+#10 8.671 Collecting typing-inspection>=0.4.2 (from fastapi==0.162.0->-r requirements.txt (line 2))
+#10 8.748   Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+#10 8.813 Collecting annotated-doc>=0.0.2 (from fastapi==0.162.0->-r requirements.txt (line 2))
+#10 8.890   Downloading annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+#10 8.964 Collecting opentelemetry-api>=1.44.0 (from fastapi==0.162.0->-r requirements.txt (line 2))
+#10 9.123   Downloading opentelemetry_api-1.45.2-py3-none-any.whl.metadata (1.4 kB)
+#10 9.197 Collecting click>=7.0 (from uvicorn==0.54.0->uvicorn[standard]==0.54.0->-r requirements.txt (line 3))
+#10 9.296   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+#10 9.364 Collecting h11>=0.8 (from uvicorn==0.54.0->uvicorn[standard]==0.54.0->-r requirements.txt (line 3))
+#10 9.490   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+#10 9.557 Collecting annotated-types>=0.6.0 (from pydantic==2.14.2->-r requirements.txt (line 5))
+#10 9.758   Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+#10 10.41 Collecting pydantic-core==2.50.2 (from pydantic==2.14.2->-r requirements.txt (line 5))
+#10 10.68   Downloading pydantic_core-2.50.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (6.5 kB)
+#10 10.76 Collecting python-dotenv>=1.2.2 (from pydantic-settings==2.16.2->-r requirements.txt (line 6))
+#10 11.00   Downloading python_dotenv-1.2.4-py3-none-any.whl.metadata (29 kB)
+#10 11.08 Collecting python-dateutil>=2.9.0 (from pandas==3.1.0->-r requirements.txt (line 9))
+#10 11.32   Downloading python_dateutil-3.0.0-py2.py3-none-any.whl.metadata (8.2 kB)
+#10 11.41 Collecting narwhals>=2.0.1 (from scikit-learn==1.9.1->-r requirements.txt (line 10))
+#10 11.63   Downloading narwhals-2.28.0-py3-none-any.whl.metadata (15 kB)
+#10 11.70 Collecting threadpoolctl>=3.5.0 (from scikit-learn==1.9.1->-r requirements.txt (line 10))
+#10 11.93   Downloading threadpoolctl-3.7.0-py3-none-any.whl.metadata (24 kB)
+#10 12.01 Collecting networkx>=3.0 (from scikit-image==0.26.0->-r requirements.txt (line 11))
+#10 12.23   Downloading networkx-3.6.1-py3-none-any.whl.metadata (6.8 kB)
+#10 12.31 Collecting imageio!=2.35.0,>=2.33 (from scikit-image==0.26.0->-r requirements.txt (line 11))
+#10 12.53   Downloading imageio-2.38.1-py3-none-any.whl.metadata (9.7 kB)
+#10 12.65 Collecting tifffile>=2022.8.12 (from scikit-image==0.26.0->-r requirements.txt (line 11))
+#10 12.82   Downloading tifffile-2026.3.3-py3-none-any.whl.metadata (31 kB)
+#10 12.90 Collecting packaging>=21 (from scikit-image==0.26.0->-r requirements.txt (line 11))
+#10 13.11   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+#10 13.18 Collecting lazy-loader>=0.4 (from scikit-image==0.26.0->-r requirements.txt (line 11))
+#10 13.40   Downloading lazy_loader-0.6-py3-none-any.whl.metadata (6.0 kB)
+#10 13.47 Collecting cloudpickle>=3.0 (from joblib==1.6.0->-r requirements.txt (line 13))
+#10 13.68   Downloading cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+#10 13.77 Collecting httptools>=0.8.0 (from uvicorn[standard]==0.54.0->-r requirements.txt (line 3))
+#10 13.97   Downloading httptools-0.9.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (3.5 kB)
+#10 14.06 Collecting pyyaml>=5.1 (from uvicorn[standard]==0.54.0->-r requirements.txt (line 3))
+#10 14.25   Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+#10 14.34 Collecting uvloop>=0.15.1 (from uvicorn[standard]==0.54.0->-r requirements.txt (line 3))
+#10 14.53   Downloading uvloop-0.23.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.1 kB)
+#10 14.65 Collecting watchfiles>=0.20 (from uvicorn[standard]==0.54.0->-r requirements.txt (line 3))
+#10 14.80   Downloading watchfiles-1.3.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+#10 14.97 Collecting websockets>=13.0 (from uvicorn[standard]==0.54.0->-r requirements.txt (line 3))
+#10 15.05   Downloading websockets-17.3-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.3 kB)
+#10 15.12 Collecting six>=1.6 (from python-dateutil>=2.9.0->pandas==3.1.0->-r requirements.txt (line 9))
+#10 15.20   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+#10 15.27 Collecting tzdata (from python-dateutil>=2.9.0->pandas==3.1.0->-r requirements.txt (line 9))
+#10 15.51   Downloading tzdata-2026.6-py2.py3-none-any.whl.metadata (1.4 kB)
+#10 15.59 Collecting anyio<5,>=4.0.0 (from starlette>=0.46.0->fastapi==0.162.0->-r requirements.txt (line 2))
+#10 15.66   Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+#10 15.73 Collecting idna>=2.8 (from anyio<5,>=4.0.0->starlette>=0.46.0->fastapi==0.162.0->-r requirements.txt (line 2))
+#10 15.81   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+#10 15.90 Downloading fastapi-0.162.0-py3-none-any.whl (148 kB)
+#10 16.22 Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+#10 16.42 Downloading python_multipart-0.0.32-py3-none-any.whl (30 kB)
+#10 16.54 Downloading pydantic-2.14.2-py3-none-any.whl (490 kB)
+#10 16.90 Downloading pydantic_settings-2.16.2-py3-none-any.whl (81 kB)
+#10 17.18 Downloading numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.9 MB)
+#10 19.69    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.9/16.9 MB 6.7 MB/s  0:00:02
+#10 19.94 Downloading scipy-1.17.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
+#10 26.24    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 5.6 MB/s  0:00:06
+#10 26.85 Downloading pandas-3.1.0-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.3 MB)
+#10 28.64    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.3/12.3 MB 7.1 MB/s  0:00:01
+#10 28.86 Downloading scikit_learn-1.9.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (9.3 MB)
+#10 29.85    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.3/9.3 MB 9.6 MB/s  0:00:00
+#10 30.10 Downloading scikit_image-0.26.0-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (13.7 MB)
+#10 31.35    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.7/13.7 MB 10.9 MB/s  0:00:01
+#10 31.55 Downloading pillow-13.0.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (7.1 MB)
+#10 32.28    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.1/7.1 MB 9.9 MB/s  0:00:00
+#10 32.41 Downloading joblib-1.6.0-py3-none-any.whl (306 kB)
+#10 32.50 Downloading pydantic_core-2.50.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.2 MB)
+#10 32.65    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 14.5 MB/s  0:00:00
+#10 32.73 Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+#10 32.81 Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+#10 32.89 Downloading click-8.5.0-py3-none-any.whl (125 kB)
+#10 32.97 Downloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+#10 33.05 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+#10 33.13 Downloading httptools-0.9.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (499 kB)
+#10 33.24 Downloading imageio-2.38.1-py3-none-any.whl (328 kB)
+#10 33.34 Downloading lazy_loader-0.6-py3-none-any.whl (8.8 kB)
+#10 33.42 Downloading narwhals-2.28.0-py3-none-any.whl (490 kB)
+#10 33.53 Downloading networkx-3.6.1-py3-none-any.whl (2.1 MB)
+#10 33.70    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 12.2 MB/s  0:00:00
+#10 33.78 Downloading opentelemetry_api-1.45.2-py3-none-any.whl (60 kB)
+#10 33.86 Downloading packaging-26.3-py3-none-any.whl (129 kB)
+#10 33.94 Downloading python_dateutil-3.0.0-py2.py3-none-any.whl (94 kB)
+#10 34.03 Downloading python_dotenv-1.2.4-py3-none-any.whl (23 kB)
+#10 34.10 Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (806 kB)
+#10 34.16    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 806.6/806.6 kB 15.4 MB/s  0:00:00
+#10 34.24 Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+#10 34.31 Downloading starlette-1.10.0-py3-none-any.whl (80 kB)
+#10 34.39 Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+#10 34.48 Downloading idna-3.20-py3-none-any.whl (69 kB)
+#10 34.56 Downloading threadpoolctl-3.7.0-py3-none-any.whl (26 kB)
+#10 34.64 Downloading tifffile-2026.3.3-py3-none-any.whl (243 kB)
+#10 34.73 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+#10 34.81 Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+#10 34.89 Downloading uvloop-0.23.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.0 MB)
+#10 35.20    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.0/4.0 MB 12.7 MB/s  0:00:00
+#10 35.28 Downloading watchfiles-1.3.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (458 kB)
+#10 35.39 Downloading websockets-17.3-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (225 kB)
+#10 35.48 Downloading tzdata-2026.6-py2.py3-none-any.whl (348 kB)
+#10 35.83 Installing collected packages: websockets, uvloop, tzdata, typing-extensions, threadpoolctl, six, pyyaml, python-multipart, python-dotenv, pillow, packaging, numpy, networkx, narwhals, idna, httptools, h11, cloudpickle, click, annotated-types, annotated-doc, uvicorn, typing-inspection, tifffile, scipy, python-dateutil, pydantic-core, opentelemetry-api, lazy-loader, joblib, imageio, anyio, watchfiles, starlette, scikit-learn, scikit-image, pydantic, pandas, pydantic-settings, fastapi
+#10 51.26 
+#10 51.26 Successfully installed annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 click-8.5.0 cloudpickle-3.1.2 fastapi-0.162.0 h11-0.16.0 httptools-0.9.0 idna-3.20 imageio-2.38.1 joblib-1.6.0 lazy-loader-0.6 narwhals-2.28.0 networkx-3.6.1 numpy-2.4.6 opentelemetry-api-1.45.2 packaging-26.3 pandas-3.1.0 pillow-13.0.0 pydantic-2.14.2 pydantic-core-2.50.2 pydantic-settings-2.16.2 python-dateutil-3.0.0 python-dotenv-1.2.4 python-multipart-0.0.32 pyyaml-6.0.3 scikit-image-0.26.0 scikit-learn-1.9.1 scipy-1.17.1 six-1.17.0 starlette-1.10.0 threadpoolctl-3.7.0 tifffile-2026.3.3 typing-extensions-4.16.0 typing-inspection-0.4.4 tzdata-2026.6 uvicorn-0.54.0 uvloop-0.23.0 watchfiles-1.3.0 websockets-17.3
+#10 DONE 52.0s
+
+#11 [runtime 4/7] COPY --from=builder /opt/venv /opt/venv
+#11 DONE 1.6s
+
+#12 [runtime 5/7] COPY --chown=visionq:visionq app/ ./app/
+#12 DONE 0.1s
+
+#13 [runtime 6/7] COPY --chown=visionq:visionq models/ ./models/
+#13 DONE 0.0s
+
+#14 [runtime 7/7] COPY --chown=visionq:visionq frontend/ ./frontend/
+#14 DONE 0.0s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 18.9s done
+#15 exporting manifest sha256:300113e02d07082f843a665ac5aed037a1dedb4551fc26be3bd605f6c58782df
+#15 exporting manifest sha256:300113e02d07082f843a665ac5aed037a1dedb4551fc26be3bd605f6c58782df done
+#15 exporting config sha256:72dfcec85827b6d573758605b1ac84a4090bed0b32b46e53b553a7566ae5a556 done
+#15 exporting attestation manifest sha256:8e6017fd94c549caf4a0334140598802f711658e747ba2edd6faed1e0e07d457 done
+#15 exporting manifest list sha256:459cd2a2aa26264eee5593fea7360765d6e7c6c891d072f3aa4d1f6b4410ace0 done
+#15 naming to docker.io/library/visionq:2.0.0 done
+#15 unpacking to docker.io/library/visionq:2.0.0
+#15 unpacking to docker.io/library/visionq:2.0.0 4.1s done
+#15 DONE 23.1s
+
+real	1m25.036s
+user	0m0.177s
+sys	0m0.139s

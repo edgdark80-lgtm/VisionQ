@@ -1,0 +1,13 @@
+Imágenes encontradas: 1770
+Entrenamiento: (7080, 374) (1416 originales + aumentos); prueba: (354, 374); 159.5s
+Mejores hiperparámetros: {'clf__estimator__C': 3, 'clf__estimator__gamma': 'scale'} CV f1_macro: 0.9166
+max|z| entrenamiento: p50=2.38 p99.5=7.86 -> umbral 11.79
+{
+  "test_accuracy": 0.9774,
+  "test_f1_macro": 0.9773,
+  "cv_f1_macro": 0.9166
+}
+
+real	5m34.557s
+user	8m3.578s
+sys	0m0.914s

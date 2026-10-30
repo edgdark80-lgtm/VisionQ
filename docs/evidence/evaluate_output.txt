@@ -1,0 +1,48 @@
+{
+ "vision_clean_internal_test": {
+  "n": 354,
+  "accuracy": 0.9774,
+  "manual_review_rate": 0.0056,
+  "accuracy_on_auto_decisions": 0.9773,
+  "ood_rate": 0.0,
+  "mean_confidence": 0.8733,
+  "mean_latency_ms": 38.71
+ },
+ "vision_external_30": {
+  "n": 30,
+  "accuracy": 0.9667,
+  "manual_review_rate": 0.0,
+  "accuracy_on_auto_decisions": 0.9667,
+  "ood_rate": 0.0,
+  "mean_confidence": 0.8681,
+  "mean_latency_ms": 38.16
+ },
+ "vision_ood_detection_rate": 1.0,
+ "failure_recall_by_mode": {
+  "TWF": {
+   "n_test": 10,
+   "detected": 2,
+   "recall": 0.2
+  },
+  "HDF": {
+   "n_test": 29,
+   "detected": 28,
+   "recall": 0.9655
+  },
+  "PWF": {
+   "n_test": 13,
+   "detected": 13,
+   "recall": 1.0
+  },
+  "OSF": {
+   "n_test": 16,
+   "detected": 16,
+   "recall": 1.0
+  },
+  "RNF": {
+   "n_test": 4,
+   "detected": 0,
+   "recall": 0.0
+  }
+ }
+}

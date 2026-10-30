@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VisionQ · Estación de inspección</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <h1>VisionQ</h1>
+      <p class="brand-sub">Estación de inspección de calidad</p>
+    </div>
+    <div class="status" id="status" role="status" aria-live="polite">
+      <span class="dot" id="status-dot"></span>
+      <span id="status-text">Conectando con la API…</span>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Módulos">
+    <button role="tab" aria-selected="true" aria-controls="panel-inspect" id="tab-inspect" class="tab">Inspección visual</button>
+    <button role="tab" aria-selected="false" aria-controls="panel-failure" id="tab-failure" class="tab">Predicción de fallas</button>
+    <button role="tab" aria-selected="false" aria-controls="panel-system" id="tab-system" class="tab">Sistema</button>
+  </nav>
+
+  <main>
+    <!-- Inspección visual -->
+    <section id="panel-inspect" role="tabpanel" aria-labelledby="tab-inspect" class="panel">
+      <div class="station">
+        <div class="capture">
+          <label class="viewport" id="dropzone" for="file-input">
+            <span class="corner tl"></span><span class="corner tr"></span>
+            <span class="corner bl"></span><span class="corner br"></span>
+            <img id="preview" alt="" hidden>
+            <span class="viewport-hint" id="viewport-hint">Arrastra una imagen de la superficie<br>o haz clic para elegirla</span>
+          </label>
+          <input type="file" id="file-input" accept="image/jpeg,image/png,image/bmp,image/tiff" hidden>
+          <div class="samples">
+            <p>Probar con una muestra de NEU-DET</p>
+            <div class="sample-row" id="sample-row"></div>
+          </div>
+        </div>
+
+        <div class="verdict" id="verdict" aria-live="polite">
+          <div class="tag tag-empty" id="tag">
+            <span class="tag-hole" aria-hidden="true"></span>
+            <p class="tag-decision" id="tag-decision">Sin pieza</p>
+            <p class="tag-defect" id="tag-defect">Carga una imagen para obtener la disposición.</p>
+          </div>
+          <dl class="readout" id="readout" hidden>
+            <div><dt>Confianza</dt><dd id="r-conf"></dd></div>
+            <div><dt>Latencia del modelo</dt><dd id="r-lat"></dd></div>
+            <div><dt>Distribución</dt><dd id="r-ood"></dd></div>
+            <div><dt>Calidad de captura</dt><dd id="r-quality"></dd></div>
+          </dl>
+          <div class="topk" id="topk" hidden>
+            <h3>Clases más probables</h3>
+            <ol id="topk-list"></ol>
+          </div>
+          <p class="reason" id="reason" hidden></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Predicción de fallas -->
+    <section id="panel-failure" role="tabpanel" aria-labelledby="tab-failure" class="panel" hidden>
+      <div class="station">
+        <form id="failure-form" class="sensor-form" novalidate>
+          <fieldset>
+            <legend>Lectura de sensores de la máquina</legend>
+            <label>Variante de producto
+              <select name="type" required>
+                <option value="L">L · baja</option>
+                <option value="M" selected>M · media</option>
+                <option value="H">H · alta</option>
+              </select>
+            </label>
+            <label>Temperatura del aire (K)
+              <input name="air_temperature_k" type="number" step="0.1" value="298.1" required></label>
+            <label>Temperatura de proceso (K)
+              <input name="process_temperature_k" type="number" step="0.1" value="308.6" required></label>
+            <label>Velocidad de rotación (rpm)
+              <input name="rotational_speed_rpm" type="number" step="1" value="1551" required></label>
+            <label>Par (Nm)
+              <input name="torque_nm" type="number" step="0.1" value="42.8" required></label>
+            <label>Desgaste de herramienta (min)
+              <input name="tool_wear_min" type="number" step="1" value="0" required></label>
+          </fieldset>
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Evaluar riesgo</button>
+            <button type="button" class="btn-ghost" id="preset-risk">Cargar escenario de riesgo</button>
+          </div>
+          <p class="form-error" id="form-error" role="alert" hidden></p>
+        </form>
+
+        <div class="verdict" aria-live="polite">
+          <div class="tag tag-empty" id="ftag">
+            <span class="tag-hole" aria-hidden="true"></span>
+            <p class="tag-decision" id="ftag-decision">Sin lectura</p>
+            <p class="tag-defect" id="ftag-detail">Envía una lectura para estimar la probabilidad de falla.</p>
+          </div>
+          <div class="gauge" id="gauge" hidden>
+            <div class="gauge-track"><div class="gauge-fill" id="gauge-fill"></div><div class="gauge-thr" id="gauge-thr"></div></div>
+            <p class="gauge-label"><span id="gauge-p"></span> de probabilidad · umbral <span id="gauge-t"></span></p>
+          </div>
+          <div class="topk" id="indicators" hidden>
+            <h3>Indicadores por modo de falla</h3>
+            <ul id="indicator-list"></ul>
+          </div>
+          <p class="reason" id="faction" hidden></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sistema -->
+    <section id="panel-system" role="tabpanel" aria-labelledby="tab-system" class="panel" hidden>
+      <div class="system-grid">
+        <article>
+          <h3>Modelos cargados</h3>
+          <pre id="models-json">—</pre>
+        </article>
+        <article>
+          <h3>Métricas de uso de la API</h3>
+          <pre id="metrics-json">—</pre>
+          <button class="btn-ghost" id="refresh-metrics">Actualizar métricas</button>
+        </article>
+        <article class="docs-links">
+          <h3>Documentación de la API</h3>
+          <p>La interfaz consume exclusivamente la API REST <code>/api/v1</code>. Explora los contratos en:</p>
+          <p><a id="link-docs" href="/docs">Swagger UI</a> · <a id="link-redoc" href="/redoc">ReDoc</a> · <a id="link-openapi" href="/openapi.json">openapi.json</a></p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    Proyecto académico. Imágenes: NEU-DET (Song &amp; Yan, 2013). Sensores: AI4I 2020 (Matzka, 2020). La política de disposición es ilustrativa.
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

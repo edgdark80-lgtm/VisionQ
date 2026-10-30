@@ -1,0 +1,51 @@
+name: Release (GHCR + Cloud Run opcional)
+
+# Publica la imagen multi-arquitectura en GitHub Container Registry al crear un tag v*.
+# El job de Cloud Run solo corre si existen los secretos GCP_PROJECT_ID y GCP_SA_KEY.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/visionq:${{ github.ref_name }}
+            ghcr.io/${{ github.repository_owner }}/visionq:latest
+
+  cloud-run:
+    needs: publish
+    runs-on: ubuntu-latest
+    env:
+      HAS_GCP: ${{ secrets.GCP_SA_KEY != '' }}
+    steps:
+      - uses: actions/checkout@v4
+        if: env.HAS_GCP == 'true'
+      - uses: google-github-actions/auth@v2
+        if: env.HAS_GCP == 'true'
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+      - uses: google-github-actions/setup-gcloud@v2
+        if: env.HAS_GCP == 'true'
+      - name: Desplegar
+        if: env.HAS_GCP == 'true'
+        run: PROJECT_ID=${{ secrets.GCP_PROJECT_ID }} bash deploy/gcp-cloud-run.sh

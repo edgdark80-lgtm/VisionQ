@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+venv*/
+.env
+.pytest_cache/
+.ruff_cache/
+.DS_Store
+# Datos de entrenamiento voluminosos (se descargan con training/download_data.sh)
+data/neu_det/

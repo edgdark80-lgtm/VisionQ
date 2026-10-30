@@ -1,0 +1,6 @@
+{"endpoint": "inspect", "requests": 60, "concurrency": 1, "throughput_rps": 18.3, "error_rate": 0.0, "latency_ms": {"p50": 56.4, "p95": 63.5, "p99": 66.0, "mean": 54.7, "max": 65.5}}
+{"endpoint": "inspect", "requests": 60, "concurrency": 4, "throughput_rps": 24.0, "error_rate": 0.0, "latency_ms": {"p50": 163.4, "p95": 248.3, "p99": 280.9, "mean": 163.6, "max": 273.6}}
+{"endpoint": "inspect", "requests": 60, "concurrency": 8, "throughput_rps": 22.3, "error_rate": 0.0, "latency_ms": {"p50": 349.7, "p95": 487.7, "p99": 622.7, "mean": 349.1, "max": 586.7}}
+{"endpoint": "failure", "requests": 60, "concurrency": 1, "throughput_rps": 39.7, "error_rate": 0.0, "latency_ms": {"p50": 24.2, "p95": 35.8, "p99": 37.5, "mean": 25.2, "max": 37.3}}
+{"endpoint": "failure", "requests": 60, "concurrency": 4, "throughput_rps": 23.4, "error_rate": 0.0, "latency_ms": {"p50": 165.9, "p95": 274.1, "p99": 320.1, "mean": 169.1, "max": 308.6}}
+{"endpoint": "failure", "requests": 60, "concurrency": 8, "throughput_rps": 22.4, "error_rate": 0.0, "latency_ms": {"p50": 345.6, "p95": 475.8, "p99": 536.4, "mean": 349.2, "max": 524.9}}
